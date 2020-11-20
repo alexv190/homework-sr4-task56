@@ -1,41 +1,27 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { LessonRecord } from '../app.component';
 
 @Component({
   selector: 'app-study-table',
   templateUrl: './study-table.component.html',
   styleUrls: ['./study-table.component.css'],
 })
-export class StudyTableComponent implements OnInit {
-  lessonRecords: Array<LessonRecord> = [];
-  @Input() newLesson:LessonRecord
+export class StudyTableComponent {
+  @Input('lessons') lessonRecords: Array<LessonRecord> = []; 
+  newLesson:LessonRecord = this.createNewLesson(0)
 
   constructor() {}
 
-  ngOnInit(): void {
-    this.createNewLesson(1);
-  }
-
   addNewLesson() {
     const id = this.lessonRecords.length + 1;
-    const lesson = this.newLesson//new LessonRecord(id, id, new Date('02-03-2020'), 'a','b','c');
+    const lesson = this.newLesson
     this.lessonRecords.push(lesson);
-    this.createNewLesson(0);
+    this.newLesson = this.createNewLesson(id);
   }
 
-  private createNewLesson(id:Number) {
-    this.newLesson = new LessonRecord(id, id, new Date(), '','','')
+  private createNewLesson(id:number) {
+    return new LessonRecord(id, id, new Date(), '','','')
   }
 }
 
-class LessonRecord {
-  constructor(
-    public id:Number,
-    public number: Number,
-    public date: Date,
-    public topic: string,
-    public hometask: string,
-    public additional: string
-  ) {}
-
-}

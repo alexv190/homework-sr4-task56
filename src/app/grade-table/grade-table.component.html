@@ -1,0 +1,28 @@
+Таблица оценок
+<div>
+  <table style="width: 100%">
+    <tr>
+      <th>ФИО</th>
+      <th *ngFor="let lesson of lessonRecords">
+        {{ lesson.date | date: "dd.MM.yyyy" }}
+      </th>
+      <th>Средний балл</th>
+      <th>Округленный балл</th>
+      <th>Примечание</th>
+    </tr>
+    <tr *ngFor="let student of students">
+      <td>{{ student.name }}</td>
+      <td *ngFor="let studentGrade of student.grades; let i=index">
+        <select (change)="sel(student,i,$event.target.value)">
+          <option></option>
+          <ng-template ngFor let-gradeval [ngForOf]="[1, 2, 3, 4, 5]">
+            <option [selected]="studentGrade == gradeval">{{ gradeval }}</option>
+          </ng-template>
+        </select>
+      </td>
+      <td>{{ student.average }}</td>
+      <td>{{ student.rounded }}</td>
+      <td>{{ student.additional }}</td>
+    </tr>
+  </table>
+</div>

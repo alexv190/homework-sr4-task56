@@ -1,1 +1,3 @@
-<app-study-table></app-study-table>
+<app-study-table #studyTable [lessons]="lessonRecords"></app-study-table>
+<button (click)="addNewLesson(studyTable.newLesson)">Добавить</button>
+<app-grade-table [students]="students" [lessonRecords]="lessonRecords"></app-grade-table>
