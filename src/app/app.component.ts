@@ -14,7 +14,6 @@ export class AppComponent {
     this.students.push(this.generateNewStudent('Петров', 'Отличник'));
     this.students.push(this.generateNewStudent('Иванов', 'Хорошист'));
     this.students.push(this.generateNewStudent('Горячева', 'Отличник'));
-    console.log('added student');
   }
 
   addNewLesson(lesson: LessonRecord) {
@@ -29,8 +28,6 @@ export class AppComponent {
       student.calcAvgGrades();
     }
   }
-
-
 
   private generateNewStudent(name: string, additional: string): Student {
     return new Student(name, new Array<number>(), 0, 0, additional);
@@ -60,9 +57,14 @@ export class Student {
   calcAvgGrades() {
     let sum: number = 0;
     for (let grade of this.grades) {
-      sum = sum + grade;
+      sum += grade;
     }
     this.average = sum / this.grades.length;
     this.rounded = Math.floor(sum / this.grades.length);
+  }
+
+  updateGrade(gradeIndex:number, grade:number) {
+    this.grades[gradeIndex] = grade;
+    this.calcAvgGrades();
   }
 }

@@ -1,4 +1,4 @@
-Таблица оценок
+<h1>Таблица оценок</h1>
 <div>
   <table style="width: 100%">
     <tr>
@@ -12,12 +12,13 @@
     </tr>
     <tr *ngFor="let student of students">
       <td>{{ student.name }}</td>
-      <td *ngFor="let studentGrade of student.grades; let i=index">
-        <select (change)="sel(student,i,$event.target.value)">
-          <option></option>
-          <ng-template ngFor let-gradeval [ngForOf]="[1, 2, 3, 4, 5]">
-            <option [selected]="studentGrade == gradeval">{{ gradeval }}</option>
+      <td *ngFor="let studentGrade of student.grades; let lessonNum=index">
+        <select (change)="updateGradeForStudent(student, lessonNum, $event.target.value)">
+          <option> </option>
+          <ng-template ngFor let-eachGrade [ngForOf]="[1, 2, 3, 4, 5]">
+            <option >{{ eachGrade }}</option>
           </ng-template>
+          <!-- [selected]="studentGrade == eachGrade"  -->
         </select>
       </td>
       <td>{{ student.average }}</td>

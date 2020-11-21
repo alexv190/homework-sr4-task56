@@ -15,12 +15,9 @@ export class GradeTableComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  sel(student:Student, index:number, grade:any) {
+  updateGradeForStudent(student:Student, index:number, grade:any) {
     const gradeAsInt = parseInt(grade, 10);
-    student.grades[index] = gradeAsInt;
-    student.calcAvgGrades();
-    // const studentIndex = this.students.indexOf(student)
-    // this.students[studentIndex] = new Student(student.name, student.grades, student.average, student.rounded, student.additional);
+    student.updateGrade(index, gradeAsInt)
     console.log(student, index, gradeAsInt)
   }
 
