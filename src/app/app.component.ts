@@ -11,22 +11,27 @@ export class AppComponent {
   students: Array<Student> = [];
 
   ngOnInit(): void {
-    this.students.push(this.generateNewStudent('Петров', 'Отличник'));
-    this.students.push(this.generateNewStudent('Иванов', 'Хорошист'));
-    this.students.push(this.generateNewStudent('Сидоров', 'Отличник'));
+    this.loadData();
   }
 
-  addNewLesson(lesson: LessonRecord) {
-    const id = this.lessonRecords.length + 1;
-    this.lessonRecords.push(lesson);
-    this.addGradesToStudends();
-  }
-
-  private addGradesToStudends() {
-    for (let student of this.students) {
-      student.grades.push(4);
-      student.calcAvgGrades();
+  loadData() {
+    const loadedLessons = JSON.parse(localStorage.getItem('lessons'));
+    if (loadedLessons != null) {
+      this.lessonRecords = loadedLessons;
     }
+    const loadedStudents = JSON.parse(localStorage.getItem('students'));
+    if (loadedStudents == null) {
+      this.students.push(this.generateNewStudent('Петров', 'Отличник'));
+      this.students.push(this.generateNewStudent('Иванов', 'Хорошист'));
+      this.students.push(this.generateNewStudent('Сидоров', 'Отличник'));
+    } else {
+      this.students = loadedStudents;
+    }
+  }
+
+  saveData() {
+    localStorage.setItem('lessons', JSON.stringify(this.lessonRecords));
+    localStorage.setItem('students', JSON.stringify(this.students));
   }
 
   private generateNewStudent(name: string, additional: string): Student {
@@ -63,7 +68,7 @@ export class Student {
     this.rounded = Math.floor(sum / this.grades.length);
   }
 
-  updateGrade(gradeIndex:number, grade:number) {
+  updateGrade(gradeIndex: number, grade: number) {
     this.grades[gradeIndex] = grade;
     this.calcAvgGrades();
   }

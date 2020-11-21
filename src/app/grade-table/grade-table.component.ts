@@ -7,8 +7,8 @@ import { LessonRecord, Student } from '../app.component';
   styleUrls: ['./grade-table.component.css']
 })
 export class GradeTableComponent implements OnInit {
-  @Input('lessonRecords') lessonRecords: Array<LessonRecord> = [];
-  @Input('students') students: Array<Student> = []; 
+  @Input() lessonRecords: Array<LessonRecord> = [];
+  @Input() students: Array<Student> = []; 
   
   constructor() { }
 

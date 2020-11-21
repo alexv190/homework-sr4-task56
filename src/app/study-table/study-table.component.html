@@ -4,25 +4,25 @@
     <tr>
       <td>Номер</td>
       <td>
-        <input #lessonNumber type="text" [(ngModel)]="newLesson.number" />
+        <input #lessonNumber type="text" [(ngModel)]="editingLesson.number" />
       </td>
     </tr>
     <tr>
       <td>Дата</td>
       <td>
-        <input #lessonDate type="text" [(ngModel)]="newLesson.date" />
+        <input #lessonDate type="text" [(ngModel)]="editingLesson.date" />
       </td>
     </tr>
     <tr>
       <td>Тема</td>
       <td>
-        <input #lessonTopic type="text" [(ngModel)]="newLesson.topic" />
+        <input #lessonTopic type="text" [(ngModel)]="editingLesson.topic" />
       </td>
     </tr>
     <tr>
       <td>Домашнее задание</td>
       <td>
-        <input #lessonHometask type="text" [(ngModel)]="newLesson.hometask" />
+        <input #lessonHometask type="text" [(ngModel)]="editingLesson.hometask" />
       </td>
     </tr>
     <tr>
@@ -31,13 +31,13 @@
         <input
           #lessonAdditional
           type="text"
-          [(ngModel)]="newLesson.additional"
+          [(ngModel)]="editingLesson.additional"
         />
       </td>
     </tr>
   </table>
 </div>
-
+<button (click)="addNewLesson()">Добавить</button>
 <div>
   <table style="width: 100%">
     <tr>
