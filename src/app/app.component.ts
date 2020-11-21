@@ -13,7 +13,7 @@ export class AppComponent {
   ngOnInit(): void {
     this.students.push(this.generateNewStudent('Петров', 'Отличник'));
     this.students.push(this.generateNewStudent('Иванов', 'Хорошист'));
-    this.students.push(this.generateNewStudent('Горячева', 'Отличник'));
+    this.students.push(this.generateNewStudent('Сидоров', 'Отличник'));
   }
 
   addNewLesson(lesson: LessonRecord) {

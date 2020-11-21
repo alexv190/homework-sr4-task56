@@ -18,7 +18,10 @@ export class GradeTableComponent implements OnInit {
   updateGradeForStudent(student:Student, index:number, grade:any) {
     const gradeAsInt = parseInt(grade, 10);
     student.updateGrade(index, gradeAsInt)
-    console.log(student, index, gradeAsInt)
+    console.log('student=',student, 'gradeIndex=',index,'setGrade=', gradeAsInt)
   }
 
+  trackByIdx(index: number, obj: any): any {
+    return index;
+  }
 }
