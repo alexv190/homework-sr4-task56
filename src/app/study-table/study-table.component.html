@@ -4,7 +4,7 @@
     <tr>
       <td>Номер</td>
       <td>
-        <input #lessonNumber type="text" [(ngModel)]="editingLesson.number" />
+        <input #lessonNumber type="text"  type="number" [(ngModel)]="editingLesson.number" />
       </td>
     </tr>
     <tr>
@@ -46,6 +46,7 @@
       <th>Тема</th>
       <th>Домашнее задание</th>
       <th>Примечание</th>
+      <th>Действия</th>
     </tr>
     <tr *ngFor="let lessonRecord of lessonRecords">
       <td>{{ lessonRecord.number }}</td>
@@ -53,6 +54,9 @@
       <td>{{ lessonRecord.topic }}</td>
       <td>{{ lessonRecord.hometask }}</td>
       <td>{{ lessonRecord.additional }}</td>
+      <td>
+          <button (click)="delete(lessonRecord.id)">Удалить</button>
+      </td>
     </tr>
   </table>
 </div>

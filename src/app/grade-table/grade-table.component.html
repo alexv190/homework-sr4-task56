@@ -14,13 +14,13 @@
       <td>{{ student.name }}</td>
       <td *ngFor="let studentGrade of student.grades; let lessonNum=index;trackBy:trackByIdx">
         <select (change)="updateGradeForStudent(student, lessonNum, $event.target.value)">
-           <option disabled > </option>
+           <option  > </option>
           <ng-template ngFor let-eachGrade [ngForOf]="[1, 2, 3, 4, 5]">
             <option [selected]="studentGrade == eachGrade">{{ eachGrade }}</option>
           </ng-template>
         </select>
       </td>
-      <td>{{ student.average }}</td>
+      <td>{{ student.average | number : '1.0-2' }}</td>
       <td>{{ student.rounded }}</td>
       <td>{{ student.additional }}</td>
     </tr>
